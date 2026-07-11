@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import useCartStore from '../stores/CartStore'
 
 export default function ProductCard({product}) {
-  
+  const addTocart=useCartStore((state)=>state.addTocart)
     return (
       <div
   className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 hover:-translate-y-2"
@@ -45,7 +46,9 @@ export default function ProductCard({product}) {
     </div>
 
     {/* Button */}
-    <button className="mt-5 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 active:scale-95">
+    <button className="mt-5 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 active:scale-95"
+    onClick={()=>addTocart}
+    >
       🛒 Add to Cart
     </button>
   </div>
