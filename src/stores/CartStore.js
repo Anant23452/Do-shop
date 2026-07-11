@@ -7,6 +7,7 @@ const useCartStore = create((set) => ({
     set((state) => ({
       cart: [...state.cart, product],
     })),
+    console.log(cart)
 }))
 
 export default useCartStore;
