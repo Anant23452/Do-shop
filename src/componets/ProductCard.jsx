@@ -16,7 +16,7 @@ export default function ProductCard({product}) {
        />
     </div>
     <h3 className="font-semibold text-gray-300">{product.title}</h3>
-    <h4 className="font-semibold text-gray-300">{product.title}</h4>
+    <h4 className="font-semibold text-gray-300 bg-red-400">{product.category}</h4>
     <p className="text-orange-700 font-bold text-lg mt-1">{product.price}</p>
     <p>Rating: {product.rating.rate} / 5</p>
     <p>Total Reviews: {product.rating.count}</p>
