@@ -2,6 +2,9 @@ import useCartStore from "../stores/CartStore";
 
 export default function Cart() {
   const cart = useCartStore((state) => state.cart);
+  const increaseQuantity = useCartStore(
+  (state) => state.increaseQuantity
+);
   const total = cart.reduce((sum, item) => {
     return sum + item.price * item.quantity;
   }, 0);
@@ -46,7 +49,10 @@ export default function Cart() {
                   {/* Quantity Display */}
                   <span className="px-5 text-lg font-semibold">1</span>
 
-                  <button className="px-4 bg-gray-100 hover:bg-gray-200 h-full flex items-center justify-center text-lg font-bold">
+                  <button
+                   className="px-4 bg-gray-100 hover:bg-gray-200 h-full flex items-center justify-center text-lg font-bold"
+                   onClick={()=>increaseQuantity()}
+                   >
                     +
                   </button>
                 </div>

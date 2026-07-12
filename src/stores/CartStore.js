@@ -29,7 +29,13 @@ const useCartStore = create((set) => ({
     }),
   increaseQuantity:(id)=>
     set((state)=>{
-      
+      return{
+        cart:state.cart.map((item,index)=>
+        index===id
+        ?{...item,quantity:item.quantity+1}
+        :item
+        )
+      }
     })
 }))
 
