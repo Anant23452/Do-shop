@@ -29,9 +29,10 @@ const useCartStore = create((set) => ({
     }),
   increaseQuantity:(id)=>
     set((state)=>{
+      console.log("Increase clicked:", id)
       return{
-        cart:state.cart.map((item,index)=>
-        index===id
+        cart:state.cart.map((item)=>
+        id===item.id
         ?{...item,quantity:item.quantity+1}
         :item
         )

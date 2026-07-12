@@ -2,9 +2,16 @@ import useCartStore from "../stores/CartStore";
 
 export default function Cart() {
   const cart = useCartStore((state) => state.cart);
+
+  //increasing 
   const increaseQuantity = useCartStore(
   (state) => state.increaseQuantity
 );
+// decreasing 
+const decreaseQuantity= useCartStore(
+  (state)=>state.decreaseQuantity
+)
+// total calculation 
   const total = cart.reduce((sum, item) => {
     return sum + item.price * item.quantity;
   }, 0);
@@ -42,7 +49,9 @@ export default function Cart() {
               <div className="showbu flex items-center gap-6 w-80 h-10">
                 {/* Quantity Control Group */}
                 <div className="flex items-center border-2 rounded-lg overflow-hidden h-full">
-                  <button className="px-4 bg-gray-100 hover:bg-gray-200 h-full flex items-center justify-center text-lg font-bold">
+                  <button className="px-4 bg-gray-100 hover:bg-gray-200 h-full flex items-center justify-center text-lg font-bold"
+                  onClick={()=>decreaseQuantity(item.id)}
+                  >
                     -
                   </button>
 
@@ -51,7 +60,7 @@ export default function Cart() {
 
                   <button
                    className="px-4 bg-gray-100 hover:bg-gray-200 h-full flex items-center justify-center text-lg font-bold"
-                   onClick={()=>increaseQuantity()}
+                   onClick={()=>increaseQuantity(item.id)}
                    >
                     +
                   </button>
