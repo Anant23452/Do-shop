@@ -1,62 +1,47 @@
-import { create } from 'zustand'
+import { create } from 'zustand';
 
 const useCartStore = create((set) => ({
   cart: [],
-  
+
   addTocart: (product) =>
     set((state) => {
-      // 1. Find the index of the product
       const existingIndex = state.cart.findIndex((item) => item.id === product.id);
 
-      // 2. If product not found (index is -1), add it as a new entry
       if (existingIndex === -1) {
         return {
-          cart: [
-            ...state.cart,
-            { ...product, quantity: 1 }
-          ]
+          cart: [...state.cart, { ...product, quantity: 1 }],
         };
       }
 
-      // 3. If found, use map() to increment the quantity of that specific item
       return {
         cart: state.cart.map((item, index) =>
           index === existingIndex
             ? { ...item, quantity: item.quantity + 1 }
             : item
-        )
+        ),
       };
     }),
-  increaseQuantity:(id)=>
-    set((state)=>{
-      console.log("Increase clicked:", id)
-      return{
-        cart:state.cart.map((item)=>
-        id===item.id
-        ?{...item,quantity:item.quantity+1}
-        :item
-        )
-      }
-    }),
-    decreaseQuantity:(id)=>
-      set((state)=>{
-        return{
-         item.quantity>1
-         ?(
-           cart:state.cart.map((item)=>
-            id=item.id
-            ?{...item,quantity:item.quantity-1}
-          :item
-          )
-         )
-         :(
-          cart.filter((item)=>item.id===id)
-         )
-         
 
-         
-        }
-      })
-}))
+  increaseQuantity: (id) =>
+    set((state) => ({
+      cart: state.cart.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      ),
+    })),
+
+  decreaseQuantity: (id) =>
+    set((state) => ({
+      cart: state.cart
+        .map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        )
+        .filter((item) => item.quantity > 0),
+    })),
+
+  removeFromCart: (id) =>
+    set((state) => ({
+      cart: state.cart.filter((item) => item.id !== id),
+    })),
+}));
 
 export default useCartStore;

@@ -11,6 +11,10 @@ export default function Cart() {
 const decreaseQuantity= useCartStore(
   (state)=>state.decreaseQuantity
 )
+//remove cart 
+const removeFromCart = useCartStore(
+  (state)=>state.removeFromCart
+)
 // total calculation 
   const total = cart.reduce((sum, item) => {
     return sum + item.price * item.quantity;
@@ -67,7 +71,9 @@ const decreaseQuantity= useCartStore(
                 </div>
 
                 {/* Remove Button */}
-                <button className="text-base text-red-600 hover:text-red-800 font-semibold hover:underline">
+                <button className="text-base text-red-600 hover:text-red-800 font-semibold hover:underline"
+                onClick={()=>removeFromCart(item.id)}
+                >
                   Remove
                 </button>
               </div>
