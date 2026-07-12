@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
+import useCartStore from '../stores/CartStore';
 
-export class Checkout extends Component {
-  render() {
-    return (
-      <div>Checkout</div>
-    )
-  }
+export default function Checkout() {
+  const cart = useCartStore(state => state.cart);
+  return (
+    <div>Checkout</div>
+  )
 }
-
-export default Checkout
