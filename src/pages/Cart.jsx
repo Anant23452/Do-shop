@@ -5,7 +5,7 @@ import useCartStore from '../stores/CartStore'
 export default function Cart() {
   const cart = useCartStore((state)=>state.cart)
   return (
-    <div className="max-w-6xl mx-auto p-8">
+    <div className="max-w-6xl mx-auto p-8 bg-blue-300">
     <div className="heading text-3xl font-bold mb-8">
       <h1>My Whishlist</h1>
     </div>
