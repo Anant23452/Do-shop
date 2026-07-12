@@ -41,9 +41,20 @@ const useCartStore = create((set) => ({
     decreaseQuantity:(id)=>
       set((state)=>{
         return{
-          cart:state.cart.map((item)=>
-            ?{...item,quantity:item.quantity+1}
+         item.quantity>1
+         ?(
+           cart:state.cart.map((item)=>
+            id=item.id
+            ?{...item,quantity:item.quantity-1}
+          :item
           )
+         )
+         :(
+          cart.filter((item)=>item.id===id)
+         )
+         
+
+         
         }
       })
 }))
