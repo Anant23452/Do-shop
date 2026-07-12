@@ -4,7 +4,7 @@ A modern and responsive Shopping Cart application built with **React**, **React 
 
 ## 🚀 Live Demo
 
-https://your-vercel-link.vercel.app
+https://do-shop-eight.vercel.app/
 
 ---
 
