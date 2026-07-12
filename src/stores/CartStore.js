@@ -27,6 +27,10 @@ const useCartStore = create((set) => ({
         )
       };
     }),
+  increaseQuantity:(id)=>
+    set((state)=>{
+      
+    })
 }))
 
 export default useCartStore;
